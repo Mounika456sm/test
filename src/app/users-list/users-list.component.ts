@@ -28,4 +28,12 @@ export class UsersListComponent implements OnInit {
   getUserData(user: any) {
     this.router.navigateByUrl(`/create-user/${user.id}`);
   }
+
+  DeleteUserId(userid: number) {
+    this.api_call.deleteUser(userid).subscribe(res => {
+      // console.log("res", res);
+    }, err => {
+      console.log("error", err);
+    })
+  }
 }

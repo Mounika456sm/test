@@ -35,6 +35,31 @@ export class CreateUserComponent implements OnInit {
     })
   }
 
+  AddUser() {
+    let userdata = {
+      name: this.createUserForm.controls['name'].value,
+      email: this.createUserForm.controls['email'].value,
+      phone: this.createUserForm.controls['phone'].value,
+      website: this.createUserForm.controls['website_url'].value,
+    }
+    if (this.userId) {
+      this.api_call.updateUser(userdata, this.userId).subscribe(updateres => {
+        // console.log("res", updateres);
+      }, err => {
+        console.log("error", err);
+      })
+    }
+    else {
+      this.api_call.createUser(userdata).subscribe(res => {
+        // console.log("success", res);
+      }, error => {
+        console.log("error", error);
+      })
+    }
+  }
+
+
+
   getUserDataById() {
     this.api_call.getUserDataById(this.userId).subscribe(res => {
       this.userData = res;

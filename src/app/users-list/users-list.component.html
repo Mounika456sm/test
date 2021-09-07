@@ -2,12 +2,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 mb-3" *ngFor="let user of userData;">
-                <div class="card" (click)="getUserData(user)">
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{user.name}}</h5>
                         <p class="card-text">{{user.email}}</p>
                         <p>{{user.phone}}</p>
                         <p>{{user.website}}</p>
+                        <button class="btn btn-primary mr-15" (click)="getUserData(user)">Edit</button>
+                        <button class="btn btn-primary" (click)="DeleteUserId(user.id)">Delete</button>
                     </div>
                 </div>
             </div>

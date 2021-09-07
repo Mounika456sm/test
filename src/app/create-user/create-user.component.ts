@@ -38,7 +38,6 @@ export class CreateUserComponent implements OnInit {
   getUserDataById() {
     this.api_call.getUserDataById(this.userId).subscribe(res => {
       this.userData = res;
-      console.log("res", res, this.userData.name, this.userData.email);
       this.createUserForm.controls['name'].setValue(this.userData.name);
       this.createUserForm.controls['email'].setValue(this.userData.email);
       this.createUserForm.controls['phone'].setValue(this.userData.phone);

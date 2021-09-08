@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonService } from '../../services/common.service';
 import { ToastComponent } from '../toast/toast.component';
@@ -18,7 +18,8 @@ export class CreateUserComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private api_call: CommonService,
     private toast: ToastComponent,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private router: Router) {
 
     this.activatedRoute.params.subscribe(param => {
       this.userId = param.id;
@@ -54,6 +55,10 @@ export class CreateUserComponent implements OnInit {
         this.api_call.updateUser(userdata, this.userId).subscribe(updateres => {
           // console.log("res", updateres);
           this.toast.success({ message: 'User Updated Successfully', title: 'Success' });
+          setTimeout(() => {
+          this.createUserForm.reset();
+            this.router.navigateByUrl(`/user-list`);
+          }, 1000);
           this.spinner.hide();
         }, err => {
           this.spinner.hide();
@@ -65,6 +70,10 @@ export class CreateUserComponent implements OnInit {
         this.api_call.createUser(userdata).subscribe(res => {
           // console.log("success", res);
           this.toast.success({ message: 'User Created Successfully', title: 'Success' });
+          setTimeout(() => {
+          this.createUserForm.reset();
+            this.router.navigateByUrl(`/user-list`);
+          }, 1000);
           this.spinner.hide();
         }, error => {
           this.spinner.hide();
@@ -102,5 +111,6 @@ export class CreateUserComponent implements OnInit {
       }
     });
   }
+
 
 }

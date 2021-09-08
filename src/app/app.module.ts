@@ -1,13 +1,19 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { UsersListComponent } from './users-list/users-list.component';
-import { HeaderComponent } from './header/header.component'
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastComponent } from './components/toast/toast.component';
+import { CommonService } from './services/common.service';
+
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -15,15 +21,26 @@ import { HeaderComponent } from './header/header.component'
     AppComponent,
     CreateUserComponent,
     UsersListComponent,
-    HeaderComponent
+    HeaderComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      closeButton: true,
+      easing: 'ease-in',
+    }),
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [ToastComponent, CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

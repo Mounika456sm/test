@@ -1,0 +1,60 @@
+<div class="userListPage">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 mb-3" *ngFor="let user of userData;">
+                <div class="card positionRelative">
+                    <div class="card-body">
+                        <div class="userImage">
+                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+                        </div>
+                        <div class="userDetails">
+                            <h5 class="card-title" (click)="getUserData(user)">{{user.name}}</h5>
+                            <p>
+                                <!-- <i class="fa fa-envelope-o" aria-hidden="true"></i>  -->
+                                {{user.email}}
+                            </p>
+                            <p>
+                                <!-- <i class="fa fa-phone" aria-hidden="true"></i>  -->
+                                {{user.phone}}
+                            </p>
+                            <p>
+                                <!-- <i class="fa fa-globe" aria-hidden="true"></i>  -->
+                                {{user.website}}
+                            </p>
+                        </div>
+                        <div class="userAction">
+                            <span (click)="getUserData(user)"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                            <span data-toggle="modal" data-target="#deleteUser"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<ngx-spinner></ngx-spinner>
+
+<div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="deleteUserTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Delete User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure want to delete this user?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn_no" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn_yes" (click)="DeleteUser()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>

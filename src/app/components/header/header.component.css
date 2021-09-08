@@ -1,0 +1,7 @@
+.bg-light {
+    box-shadow: 0 6px 5px rgb(0 0 0 / 10%), 0 2px 6px 0 rgb(0 0 0 / 5%);
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    border-bottom: 2px solid #000;
+}

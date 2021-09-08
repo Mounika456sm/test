@@ -1,0 +1,47 @@
+<div class="createUserPage">
+    <div class="rightBlk">
+        <form [formGroup]="createUserForm">
+            <h4 class="text-center">{{userId ? 'Update':'Create'}} User</h4>
+
+            <div class="form-group mb-15">
+                <label>Name <span class="red_color">*</span> </label>
+                <input type="text" class="form-control user_input" formControlName="name" placeholder="Name" />
+                <div class="text_danger"
+                    *ngIf="createUserForm.get('name').touched && createUserForm.get('name').hasError('required')">
+                    Name is required
+                </div>
+            </div>
+            <div class="form-group mb-15">
+                <label>Email <span class="red_color">*</span> </label>
+                <input type="text" class="form-control user_input" formControlName="email" placeholder="Email" />
+                <div class="text_danger"
+                    *ngIf="createUserForm.get('email').touched && createUserForm.get('email').hasError('required')">
+                    Email is required
+                </div>
+                <div class="text_danger"
+                    *ngIf="createUserForm.get('email').dirty && createUserForm.get('email').hasError('pattern')">
+                    Invalid Email
+                </div>
+            </div>
+            <div class="form-group mb-15">
+                <label>Phone <span class="red_color">*</span> </label>
+                <input type="text" class="form-control user_input" formControlName="phone" placeholder="Phone" />
+                <div class="text_danger"
+                    *ngIf="createUserForm.get('phone').touched && createUserForm.get('phone').hasError('required')">
+                    Phone is required
+                </div>
+            </div>
+            <div class="form-group mb-15">
+                <label>Website URL</label>
+                <input type="text" class="form-control user_input" formControlName="website_url"
+                    placeholder="Website URL" />
+            </div>
+            <div class="text-center">
+                <button class="btn submit_btn" (click)="AddUser()">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<ngx-spinner></ngx-spinner>

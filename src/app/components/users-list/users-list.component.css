@@ -1,0 +1,81 @@
+.userListPage {
+    float: left;
+    width: 100%;
+    background-color: #f0f3fd;
+    padding: 30px 0;
+}
+
+.card-body:hover {
+    box-shadow: 0 20px 20px rgb(0 0 0 / 20%), 0 2px 6px 0 rgb(0 0 0 / 5%);
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.userImage, .userDetails {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+.userDetails {
+    margin-top: 10px;
+}
+
+.userDetails h5 {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.userDetails p {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.userImage img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.positionRelative {
+    position: relative;
+}
+
+.userAction {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.userAction span {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    color: #A6AAB8;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    text-align: center;
+    margin: 5px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%), 0 2px 6px 0 rgb(0 0 0 / 5%);
+}
+
+.userAction span:hover {
+    background-color: #A6AAB8;
+    color: #000;
+    cursor: pointer;
+}
+
+.btn_yes {
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: #fff;
+}
+.btn_no{
+    background-color: #ccc;
+    border-radius: 5px;
+    color: #fff;
+}

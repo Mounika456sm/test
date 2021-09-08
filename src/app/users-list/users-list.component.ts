@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from '../services/common.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-users-list',
@@ -10,16 +11,22 @@ import { CommonService } from '../services/common.service';
 export class UsersListComponent implements OnInit {
   public userData: any;
 
-  constructor(private api_call: CommonService, private router: Router) { }
+  constructor(private api_call: CommonService,
+    private router: Router,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.userList();
   }
 
   userList() {
+    this.spinner.show();
     this.api_call.getUserData().subscribe(res => {
       // console.log("success res", res);
       this.userData = res;
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 5000);
     }, error => {
       console.log("error", error);
     })
